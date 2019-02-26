@@ -32,6 +32,12 @@ Tutorial compiling C code: [here](https://github.com/syukronrm/sisop-mod-2/blob/
   - [2. Daemon](#2-daemon)
     - [2.1 Daemon](#21-daemon)
     - [2.2 Proses Pembuatan Daemon](#22-proses-pembuatan-daemon)
+      - [1. Fork Parent Process dan penghentian Parent Process](#1-fork-parent-process-dan-penghentian-parent-process)
+      - [2. Mengubah mode file menggunakan `umask(0)`](#2-mengubah-mode-file-menggunakan-umask0)
+      - [3. Membuat Unique Session ID (SID)](#3-membuat-unique-session-id-sid)
+      - [4. Mengubah Directory Kerja](#4-mengubah-directory-kerja)
+      - [5. Menutup File Descriptor Standar](#5-menutup-file-descriptor-standar)
+      - [6. Membuat Loop utama](#6-membuat-loop-utama)
   - [Appendix](#appendix)
     - [Soal Latihan](#soal-latihan)
       - [Latihan 1](#latihan-1)
@@ -77,7 +83,7 @@ Daemon Process adalah sebuah proses yang bekerja pada background karena proses i
 ### 2.1 Daemon
 Daemon adalah proses yang berjalan di balik layar (background) dan tidak berinteraksi langsung dengan user melalui standard input/output.
 ### 2.2 Proses Pembuatan Daemon
-1.  Fork Parent Process dan penghentian Parent Process 
+#### 1.  Fork Parent Process dan penghentian Parent Process 
 
 Langkah pertama adalah men*spawn* proses menjadi induk dan anak dengan melakukan *forking*,  kemudian membunuh proses induk. Proses induk yang mati akan menyebabkan sistem operasi mengira bahwa proses telah selesai.
 
@@ -93,11 +99,11 @@ if (pid > 0){
 }   //jika pembuatan proses berhasil, maka parent proses akan dimatikan
 ```
 
-2. Mengubah mode file menggunakan `umask(0)`
+#### 2. Mengubah mode file menggunakan `umask(0)`
 
 Untuk menulis beberapa file (termasuk logs) yang dibuat oleh daemon, mode file harus diubah untuk memastikan bahwa file tersebut dapat ditulis dan dibaca secara benar. Pengubahan mode file menggunakan implementasi umask().
 
-3. Membuat Unique Session ID (SID)
+#### 3. Membuat Unique Session ID (SID)
 
 Child Process harus memiliki unik SID yang berasal dari kernel agar prosesnya dapat berjalan. Child Process menjadi Orphan Process pada system. Tipe pid_t juga digunakan untuk membuat SID baru untuk Child Process. Setsid() digunakan untuk pembuatan SID baru. Fungsi setsid() memiliki return tipe yang sama dengan fork().
 
@@ -108,7 +114,7 @@ if(sid<0){
 }  
 ```
 
-4. Mengubah Directory Kerja
+#### 4. Mengubah Directory Kerja
 
 Directori kerja yang aktif harus diubah ke suatu tempat yang telah pasti akan selalu ada. Pengubahan tempat direktori kerja dapat dilakukan dengan implementasi fungsi `chdir()`. Fungsi `chdir()` mengembalikan nilai -1 jika gagal.
 
@@ -118,7 +124,7 @@ if((chdir("/"))<0) {
 }
 ```
 
-5. Menutup File Descriptor Standar
+#### 5. Menutup File Descriptor Standar
 
 Langkah terakhir dalam men-set daemon adalah menutup file desciptor standard dengan menggunakan STDIN, STDOUT, dan STDERR. Dikarenakan oleh daemon tidak menggunakan terminal, maka file desciptor dapat terus berulang dan berpotensi berbahaya bagi keamanan. Untuk mengatasi hal tersebut maka harus menggunakan fungsi close().
 
@@ -128,7 +134,7 @@ close(STDERR_FILENO);
 clode(STDOUT_FILENO);
 ```
 
-6. Membuat Loop utama 
+#### 6. Membuat Loop utama 
 
 Daemon bekerja dalam jangka waktu tertentu, sehingga diperlukan sebuah looping.
 
