@@ -31,8 +31,7 @@ Tutorial compiling C code: [here](https://github.com/syukronrm/sisop-mod-2/blob/
       - [Daemon Process](#daemon-process)
   - [2. Daemon](#2-daemon)
     - [2.1 Daemon](#21-daemon)
-    - [2.2 Cara Membuat Daemon](#22-cara-membuat-daemon)
-    - [2.3 Proses Pembuatan Daemon](#23-proses-pembuatan-daemon)
+    - [2.2 Proses Pembuatan Daemon](#22-proses-pembuatan-daemon)
   - [Appendix](#appendix)
     - [Soal Latihan](#soal-latihan)
       - [Latihan 1](#latihan-1)
@@ -77,8 +76,7 @@ Daemon Process adalah sebuah proses yang bekerja pada background karena proses i
 ## 2. Daemon
 ### 2.1 Daemon
 Daemon adalah proses yang berjalan di balik layar (background) dan tidak berinteraksi langsung dengan user melalui standard input/output.
-### 2.2 Cara Membuat Daemon
-### 2.3 Proses Pembuatan Daemon
+### 2.2 Proses Pembuatan Daemon
 1.  Fork Parent Process dan penghentian Parent Process 
 
 Langkah pertama adalah men*spawn* proses menjadi induk dan anak dengan melakukan *forking*,  kemudian membunuh proses induk. Proses induk yang mati akan menyebabkan sistem operasi mengira bahwa proses telah selesai.
