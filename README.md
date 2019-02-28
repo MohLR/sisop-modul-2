@@ -64,7 +64,30 @@ Parent process merupakan proses yang menciptakan beberapa child process. Proses 
 Child process merupakan proses yang dibuat oleh parent process. Setiap proses dapat membuat banyak child process, namun setiap proses hanya memiliki satu parent process, kecuali untuk proses yang paling pertama, proses tersebut tidak memiliki parent. Proses pertama yang dipanggil unit dalam Linux dimulai oleh kernel pada saat boot dan tidak pernah berhenti.
 
 ### 1.3 Melihat Proses
+
 ### 1.4 Membunuh Proses
+Membunuh proses menggunakan `$ kill {pid}`
+
+Contoh :
+```
+$ kill 3789
+```
+terdapat beberapa macam signal yang digunakan dalam command kill, antara lain sebagi berikut :
+
+| Signal name | Signal value  | Effect       |
+| ------------|:-------------:| -------------|
+| SIGHUP      | 1             | Hangup         |
+| SIGINT      | 2             | Interrupt from keyboard  |
+| SIGKILL     | 9             | Kill signal   |
+| SIGTERM     | 15            | Termination signal
+| SIGSTOP     | 17,19,23      | Stop the process
+
+Secara default, `$ kill` menggunakan signal SIGTERM. Untuk menggunakan signal tertentu, gunakan 
+```
+$ kill -{signal value} {pid}
+```
+. Contoh, `$ kill -9 3789` untuk menggunakan SIGKILL.
+
 ### 1.5 Membuat Proses
 #### fork
 #### exec
