@@ -6,7 +6,7 @@ Requirements:
 1. Linux
 2. gcc / g++
 
-Tutorial compiling C code: [here](https://github.com/syukronrm/sisop-mod-2/blob/master/compiling-c-program.md)
+Tutorial compiling C code: [here](https://github.com/raldokusuma/compile-c-program)
 
 ## Daftar Isi
 - [Proses dan Daemon](#proses-dan-daemon)
@@ -75,7 +75,7 @@ Child process merupakan proses yang dibuat oleh parent process. Setiap proses da
 #### Zombie Process
 Zombie Process terjadi karena adaanya child process yang di exit namun parrent processnya tidak tahu bahwa child process tersebut telah di terminate, misalnya disebabkan karena putusnya network. Sehingga parent process tidak merelease process yang masih digunakan oleh child process tersebut walaupun process tersebut sudah mati.
 #### Orphan Process
-Orphan Process adalah sebuah proses yang ada dalam komputer dimana parent process telah selesai aatu berhenti bekerja namun proses anak sendiri tetap berjalan.
+Orphan Process adalah sebuah proses yang ada dalam komputer dimana parent process telah selesai atau berhenti bekerja namun proses anak sendiri tetap berjalan.
 #### Daemon Process
 Daemon Process adalah sebuah proses yang bekerja pada background karena proses ini tidak memiliki terminal pengontrol. Dalam sistem operasi Windows biasanya lebih dikenal dengan sebutan service. Daemon adalah sebuah proses yang didesain supaya proses tersebut tidak mendapatkan intervensi dari user.
 
