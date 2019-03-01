@@ -527,6 +527,7 @@ Modifikasi code [soal1](https://github.com/yoshimaputri/sisop-modul-2/blob/maste
 Buatlah program yang bisa membuat folder "anak" yang berisi salinan file [warisan.txt](https://github.com/yoshimaputri/sisop-modul-2/blob/master/warisan.txt).   
 Hint: gunakan `fork`, `exec`, dan `wait`.
 #### Latihan 3
+Buatlah sebuah daemon yang dapat melakukan backup isi dari file **sampah.txt** yang disimpan dalam file **log.log** lalu menghapus file **sampah.txt** tersebut.
 ### References
 https://notes.shichao.io/apue/
 
