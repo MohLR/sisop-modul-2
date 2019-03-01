@@ -39,6 +39,7 @@ Tutorial compiling C code: [here](https://github.com/raldokusuma/compile-c-progr
       - [4. Mengubah Directory Kerja](#4-mengubah-directory-kerja)
       - [5. Menutup File Descriptor Standar](#5-menutup-file-descriptor-standar)
       - [6. Membuat Loop utama](#6-membuat-loop-utama)
+    - [2.3 Contoh Implementasi Daemon](#23-contoh-implementasi-daemon)
   - [Appendix](#appendix)
     - [Soal Latihan](#soal-latihan)
       - [Latihan 1](#latihan-1)
@@ -467,6 +468,55 @@ while(1){
     sleep(5)
 }
 exit(EXIT_SUCCES);
+```
+###2.3 Contoh Implementasi Daemon
+```C
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <fcntl.h>
+#include <errno.h>
+#include <unistd.h>
+#include <syslog.h>
+#include <string.h>
+
+int main() {
+  pid_t pid, sid;
+
+  pid = fork();
+
+  if (pid < 0) {
+    exit(EXIT_FAILURE);
+  }
+
+  if (pid > 0) {
+    exit(EXIT_SUCCESS);
+  }
+
+  umask(0);
+
+  sid = setsid();
+
+  if (sid < 0) {
+    exit(EXIT_FAILURE);
+  }
+
+  if ((chdir("/")) < 0) {
+    exit(EXIT_FAILURE);
+  }
+
+  close(STDIN_FILENO);
+  close(STDOUT_FILENO);
+  close(STDERR_FILENO);
+
+  while(1) {
+    // main program here
+    sleep(30);
+  }
+  
+  exit(EXIT_SUCCESS);
+}
 ```
 
 ## Appendix
