@@ -472,7 +472,7 @@ exit(EXIT_SUCCES);
 ## Appendix
 ### Soal Latihan
 #### Latihan 1
-Modifikasi code [soal1](https://github.com/raldokusuma/compile-c-program) agar output nya menjadi huruf abjad urut dari A sampai Z, tanpa menghapus fungsi yang sudah ada.
+Modifikasi code [soal1](https://github.com/yoshimaputri/sisop-modul-2/blob/master/soal1.c) agar output nya menjadi huruf abjad urut dari A sampai Z, tanpa menghapus fungsi yang sudah ada.
 #### Latihan 2
 #### Latihan 3
 ### References
