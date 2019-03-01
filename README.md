@@ -111,9 +111,7 @@ $ kill -{signal value} {pid}
 . Contoh, `$ kill -9 3789` untuk menggunakan SIGKILL.
 
 ### 1.5 Membuat Proses
-TL;DR.
-`fork` digunakan untuk menduplikasi program yang sedang berjalan
-`exec` digunakan untuk mengganti program yang sedang berjalan dengan program yang baru
+Untuk membuat proses ada dua cara umum yang sering digunakan, `fork` dan `exec`.
 #### fork
 `fork` digunakan untuk menduplikasi proses. Proses yang baru disebut dengan _child proses_, sedangkan proses yang memanggilnya disebut dengan _parent proses_. Setelah `fork` dipanggil, kita tidaklah tahu proses manakah yang pertama selesai.
 Manual: `$ man 2 fork`
@@ -215,7 +213,6 @@ Maka, bagaimana cara menjalankan `mkdir` __dan__ `touch` dalam satu program?
 __Solusi:__
 Gunakan `fork` dan `exec`!
 
-TL;DR.  
 Buat sebuah program dengan:  
 1. Buat proses baru dengan `fork`
 2. Jalankan `exec` yang memanggil `mkdir` pada child process
