@@ -469,7 +469,7 @@ while(1){
 }
 exit(EXIT_SUCCES);
 ```
-###2.3 Contoh Implementasi Daemon
+### 2.3 Contoh Implementasi Daemon
 ```C
 #include <sys/types.h>
 #include <sys/stat.h>
