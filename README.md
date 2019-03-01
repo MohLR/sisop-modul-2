@@ -23,6 +23,7 @@ Tutorial compiling C code: [here](https://github.com/raldokusuma/compile-c-progr
     - [1.5 Membuat Proses](#15-membuat-proses)
       - [fork](#fork)
       - [exec](#exec)
+      - [fork and exec](#fork-and-exec)
       - [wait](#wait)
       - [system](#system)
     - [1.6 Jenis-Jenis Proses](#16-jenis-jenis-proses)
@@ -270,7 +271,6 @@ int main() {
 ```
 
 #### wait
-
 `wait` adalah function yang digunakan untuk mendapatkan informasi ketika child proses berganti _state_-nya. Pergantian state dapat berupa _termination_, _resume_, atau _stop_. Pada modul ini, kita hanya menggunakan `wait` untuk menangkap state _termination_.
 
 Fungsi `wait` pada parent process juga berguna untuk menangkap exit status dari child.
