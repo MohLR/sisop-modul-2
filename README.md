@@ -525,6 +525,7 @@ Buatlah program yang bisa membuat folder "anak" yang berisi salinan file [warisa
 Hint: gunakan `fork`, `exec`, dan `wait`.
 #### Latihan 3
 Buatlah sebuah daemon yang dapat melakukan backup isi dari file **sampah.txt** yang disimpan dalam file **log.log** lalu menghapus file **sampah.txt** tersebut.
+Tidak diperbolehkan menggunakan `exec`.
 ### References
 https://notes.shichao.io/apue/
 
